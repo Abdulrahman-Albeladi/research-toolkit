@@ -1,0 +1,52 @@
+# Python bytecode
+__pycache__/
+*.py[cod]
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# Tool caches
+.ruff_cache/
+.pytest_cache/
+.mypy_cache/
+.coverage
+htmlcov/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Local environment files
+.env
+.env.*
+!.env.example
+
+# OS/editor artifacts
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Build artifacts
+build/
+dist/
+*.egg-info/
+
+.env
+*.pem
+*.key
+credentials.json
+service-account.json
+local.properties
+**/data/raw/**
+**/.ipynb_checkpoints/**
+__pycache__/
+
+# Generated, local, and secret material
+*.p12
+*.pfx
+service-account*.json
+google-services.json
+*.class
+node_modules/

@@ -1,0 +1,17 @@
+line-length = 88
+exclude = [
+  ".git",
+  ".venv",
+  "venv",
+  "build",
+  "dist",
+]
+
+[lint]
+# Black cannot split long mathematical/LaTeX strings. Notebook state and exploratory
+# redefinitions are reviewed separately by notebook validation.
+ignore = ["E501"]
+
+[lint.per-file-ignores]
+"**/*.ipynb" = ["E402", "F811", "F821", "F841"]
+"projects/**/*.py" = ["F403", "F405"]
