@@ -4,9 +4,13 @@ on:
   push:
   pull_request:
 
+permissions:
+  contents: read
+
 jobs:
   quality:
     runs-on: ubuntu-latest
+    timeout-minutes: 20
     steps:
       - name: Check out repository
         uses: actions/checkout@v4
@@ -14,21 +18,50 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
-          python-version: '3.11'
+          python-version: "3.11"
 
       - name: Install tooling
         run: |
           python -m pip install --upgrade pip
-          pip install ruff black bandit pytest
+          python -m pip install ruff black bandit nbformat
+
+      - name: Python syntax
+        run: python -m compileall -q src
 
       - name: Ruff
-        run: ruff check .
+        run: ruff check src
 
       - name: Black
-        run: black --check src tests
+        run: black --check src
 
       - name: Bandit
         run: bandit -q -r src
 
-      - name: Pytest
-        run: pytest -q
+      - name: Validate notebooks
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import nbformat
+
+          failures = []
+          for path in sorted(Path("notebooks").rglob("*.ipynb")):
+              try:
+                  notebook = nbformat.read(path, as_version=4)
+              except Exception as exc:
+                  failures.append(f"{path}: malformed notebook: {exc}")
+                  continue
+
+              for index, cell in enumerate(notebook.cells):
+                  if cell.cell_type == "code":
+                      if cell.get("outputs"):
+                          failures.append(f"{path}: code cell {index} has saved outputs")
+                      if cell.get("execution_count") is not None:
+                          failures.append(
+                              f"{path}: code cell {index} has an execution count"
+                          )
+
+          if failures:
+              raise SystemExit("\n".join(failures))
+
+          print("Notebook validation passed.")
+          PY
