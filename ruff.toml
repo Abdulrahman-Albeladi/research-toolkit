@@ -2,7 +2,7 @@
 # under `notebooks/` which are not intended to be linted by Ruff. Exclude that
 # directory so Ruff focuses on code in src/ and tests/.
 line-length = 88
-# Exclude notebooks and common virtualenv/build dirs.
+# Exclude notebooks, tools, and common virtualenv/build dirs.
 exclude = [
   "notebooks/**",
   "**/notebooks/**",
@@ -11,4 +11,5 @@ exclude = [
   "build/**",
   "dist/**",
   "node_modules/**",
+  "tools/**",
 ]
