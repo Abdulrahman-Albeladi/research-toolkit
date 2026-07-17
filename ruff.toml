@@ -1,17 +1,15 @@
+[tool.ruff]
+# Project-specific Ruff configuration. This repository keeps analysis notebooks
+# under `notebooks/` which are not intended to be linted by Ruff. Exclude that
+# directory so Ruff focuses on code in src/ and tests/.
 line-length = 88
+# Exclude notebooks and common virtualenv/build dirs.
 exclude = [
-  ".git",
-  ".venv",
-  "venv",
-  "build",
-  "dist",
+  "notebooks/**",
+  "**/notebooks/**",
+  "venv/**",
+  ".venv/**",
+  "build/**",
+  "dist/**",
+  "node_modules/**"
 ]
-
-[lint]
-# Black cannot split long mathematical/LaTeX strings. Notebook state and exploratory
-# redefinitions are reviewed separately by notebook validation.
-ignore = ["E501"]
-
-[lint.per-file-ignores]
-"**/*.ipynb" = ["E402", "F811", "F821", "F841"]
-"projects/**/*.py" = ["F403", "F405"]
