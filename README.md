@@ -87,8 +87,6 @@ Synthetic notebooks are useful for understanding workflow shape, but they do not
 
 No test execution, notebook execution, lint result, dependency resolution, or end-to-end reproduction result was supplied with this repository inventory. Accordingly, this README does not claim that the Python modules, notebooks, CI workflow, or recovered analyses currently run successfully.
 
-The repository includes `.github/workflows/ci.yml`, but its presence alone does not establish a passing CI run. It also contains `.ruff_cache/`, which is generated local tooling state rather than source material.
-
 ## Limitations
 
 - The file inventory does not provide package metadata or a lockfile.
@@ -112,24 +110,18 @@ See `CONTRIBUTING.md` for contribution guidance. Before opening a contribution, 
 
 See `SECURITY.md` for vulnerability reporting guidance and `LICENSE_REVIEW.md` for the repository's license-review status.
 
-<!-- portfolio-public-release-license:start -->
+## Current repository layout
 
-## License and public-release status
+- `.github/` — 1 files
+- `docs/` — 2 files
+- `notebooks/` — 19 files
+- `src/` — 2 files
 
-This repository is published under an all-rights-reserved
-portfolio license. Viewing the repository does not grant permission to reuse its code,
-documentation, datasets, or assets. Third-party and collaborator materials retain
-their original rights.
+## Public-release status
 
-Before changing visibility from private to public, the owner must complete the
-ownership checklist in `LICENSE_REVIEW.md`.
+**READY FOR FINAL MANUAL PUBLIC-RELEASE CHECK**
 
-<!-- portfolio-public-release-license:end -->
+Automated security and documentation checks pass. Complete the ownership checklist and verify build or test claims before changing visibility.
 
-<!-- release-license:start -->
-
-## License and public-release status
-
-This repository uses an all-rights-reserved portfolio license. Review `LICENSE_REVIEW.md` and `THIRD_PARTY_NOTICES.md` before changing visibility to public.
-
-<!-- release-license:end -->
+This repository uses an all-rights-reserved portfolio license. Review `LICENSE`,
+`LICENSE_REVIEW.md`, `THIRD_PARTY_NOTICES.md`, and `OWNERSHIP_REVIEW.md`.
