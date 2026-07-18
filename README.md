@@ -1,4 +1,4 @@
-# research-paper-analysis-toolkit
+# Research Toolkit
 
 A recovered research-code portfolio for workflows developed as part of a research-paper assignment sequence. The repository preserves the available analysis logic while separating reusable pipeline code, synthetic demonstration notebooks, and cleaned source notebooks with documented lineage.
 
