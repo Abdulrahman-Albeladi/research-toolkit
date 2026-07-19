@@ -50,3 +50,7 @@ service-account*.json
 google-services.json
 *.class
 node_modules/
+
+# Examples output (generated at runtime)
+examples/output/*
+!examples/output/.gitkeep

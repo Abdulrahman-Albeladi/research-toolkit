@@ -1,0 +1,31 @@
+[build-system]
+requires = ["setuptools>=64", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "research-toolkit"
+version = "0.1.0"
+description = "Reusable Python workflows for repository code extraction and AI-text/code detector evaluation."
+readme = "README.md"
+requires-python = ">=3.10"
+license = { file = "LICENSE" }
+authors = [
+  { name = "Abdulrahman Albeladi" }
+]
+
+# Base install has no third-party runtime deps; network detection is optional.
+# Keep footprint lean for employer review.
+
+[project.optional-dependencies]
+# Network-enabled detection client
+# Install with: pip install ".[detector]"
+detector = [
+  "requests>=2.31"
+]
+
+[tool.setuptools]
+package-dir = { "" = "src" }
+
+[tool.setuptools.packages.find]
+where = ["src"]
+include = ["research_toolkit", "research_toolkit.*"]
